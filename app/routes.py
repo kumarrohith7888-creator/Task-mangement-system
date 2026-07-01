@@ -6,6 +6,7 @@ import shutil
 import os
 import secrets
 from fastapi import HTTPException
+from httpx import request
 from app import models
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
@@ -521,6 +522,8 @@ async def reset_password(
     request:ResetPasswordRequest,
     db: Session = Depends(get_db)
 ):
+    print("TOKEN:", request.token)
+    print("PASSWORD:", request.new_password)
     user_id = password_reset_tokens.get(request.token)
 
     if not user_id:
@@ -536,5 +539,6 @@ async def reset_password(
     db.commit()
 
     del password_reset_tokens[request.token]
+    
 
     return {"message": "Password reset successful"}

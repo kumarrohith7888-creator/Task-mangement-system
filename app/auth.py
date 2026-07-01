@@ -51,7 +51,7 @@ def verify_token(token: str):
 }
 
     except JWTError as e:
-        print("JWT ERROR:", e)
+        print("JWT ERROR:", repr(e))
         return None
 
 def get_current_user(token: str = Depends(oauth2_scheme)):

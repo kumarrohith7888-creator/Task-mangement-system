@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 from datetime import date
 from fastapi import Depends
 from app.database import get_db
-
+from app.schemas import ResetPasswordRequest
 import csv
 from fastapi.responses import FileResponse
 from app.models import User,Task,Comment
@@ -518,7 +518,7 @@ async def forgot_password(
 
 @router.post("/reset-password")
 async def reset_password(
-    request: models.ResetPasswordRequest,
+    request:ResetPasswordRequest,
     db: Session = Depends(get_db)
 ):
     user_id = password_reset_tokens.get(request.token)

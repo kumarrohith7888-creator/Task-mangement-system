@@ -139,7 +139,9 @@ def get_tasks(
     skip: int = Query(0),
     limit: int = Query(10)
 ):
+    print("===== GET /tasks called =====")
     
+    print("Current User:", current_user)
     query = db.query(Task).filter(
         Task.user_id == current_user["user_id"]
     )

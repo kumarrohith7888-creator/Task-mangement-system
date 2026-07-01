@@ -522,12 +522,11 @@ async def reset_password(
     request: ResetPasswordRequest,
     db: Session = Depends(get_db)
 ):
-    print("TOKEN:", request.token)
-    print("PASSWORD:", request.new_password)
+    
 
     user_id = password_reset_tokens.get(request.token)
 
-    print("USER ID:", user_id)
+    
 
     if user_id is None:
         raise HTTPException(
@@ -539,7 +538,7 @@ async def reset_password(
         User.id == user_id
     ).first()
 
-    print("USER:", user)
+    
 
     if user is None:
         raise HTTPException(

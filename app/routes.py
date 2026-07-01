@@ -519,28 +519,40 @@ async def forgot_password(
 
 @router.post("/reset-password")
 async def reset_password(
-    request:ResetPasswordRequest,
+    request: ResetPasswordRequest,
     db: Session = Depends(get_db)
 ):
     print("TOKEN:", request.token)
     print("PASSWORD:", request.new_password)
-    print("Received Token:", request.token)
-    print("Saved Tokens:", password_reset_tokens)
+
     user_id = password_reset_tokens.get(request.token)
 
-    if not user_id:
-        raise HTTPException(status_code=400, detail="Invalid or expired token")
+    print("USER ID:", user_id)
 
-    user = db.query(models.User).filter(models.User.id == user_id).first()
+    if user_id is None:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid or expired token"
+        )
 
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
+    user = db.query(User).filter(
+        User.id == user_id
+    ).first()
+
+    print("USER:", user)
+
+    if user is None:
+        raise HTTPException(
+            status_code=404,
+            detail="User not found"
+        )
 
     user.password = hash_password(request.new_password)
 
     db.commit()
 
-    del password_reset_tokens[request.token]
-    
+    password_reset_tokens.pop(request.token, None)
 
-    return {"message": "Password reset successful"}
+    return {
+        "message": "Password reset successful"
+    }

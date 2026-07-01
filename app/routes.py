@@ -524,6 +524,8 @@ async def reset_password(
 ):
     print("TOKEN:", request.token)
     print("PASSWORD:", request.new_password)
+    print("Received Token:", request.token)
+    print("Saved Tokens:", password_reset_tokens)
     user_id = password_reset_tokens.get(request.token)
 
     if not user_id:

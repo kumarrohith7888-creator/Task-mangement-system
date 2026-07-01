@@ -55,6 +55,7 @@ def verify_token(token: str):
         return None
 
 def get_current_user(token: str = Depends(oauth2_scheme)):
+    print("TOKEN RECEIVED:", repr(token))
 
     user = verify_token(token)
 
@@ -62,6 +63,6 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
         raise HTTPException(
             status_code=401,
             detail="Invalid or Expired Token"
-    )
+        )
 
     return user

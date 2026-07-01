@@ -512,10 +512,14 @@ async def forgot_password(
     print("PASSWORD RESET TOKEN:", token)
     print("===================================")
 
+    
+    reset_link = f"https://task-management-frontend-six-ivory.vercel.app/reset-password?token={token}"
+
     return {
-        "message": "Password reset token generated",
-        "token": token
-}
+        "message": "Password reset link generated",
+        "reset_link": reset_link
+    }
+
 
 @router.post("/reset-password")
 async def reset_password(

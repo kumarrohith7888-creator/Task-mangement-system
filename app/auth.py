@@ -50,8 +50,9 @@ def verify_token(token: str):
             "role": payload.get("role")
 }
 
-    except JWTError:
-        return None
+    except JWTError as e:
+        print("JWT ERROR:", e)
+    return None
 
 def get_current_user(token: str = Depends(oauth2_scheme)):
 

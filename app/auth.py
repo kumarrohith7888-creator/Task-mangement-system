@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
-
+from jose import JWTError
 load_dotenv()
 
 SECRET_KEY = os.getenv("SECRET_KEY")
@@ -32,7 +32,6 @@ def create_access_token(data: dict):
 
     return encoded_jwt
 
-from jose import JWTError
 
 def verify_token(token: str):
 
@@ -43,6 +42,7 @@ def verify_token(token: str):
             SECRET_KEY,
             algorithms=[ALGORITHM]
         )
+        print("Payload =", payload)
 
         return {
             "email": payload.get("sub"),
@@ -52,7 +52,7 @@ def verify_token(token: str):
 
     except JWTError as e:
         print("JWT ERROR:", e)
-    return None
+        return None
 
 def get_current_user(token: str = Depends(oauth2_scheme)):
 

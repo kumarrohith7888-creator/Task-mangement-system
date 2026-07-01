@@ -1,3 +1,5 @@
+import token
+
 from fastapi import APIRouter, Depends
 from fastapi import UploadFile, File
 import shutil
@@ -505,17 +507,14 @@ async def forgot_password(
     token = secrets.token_urlsafe(32)
     password_reset_tokens[token] = user.id
 
-    message = MessageSchema(
-        subject="Password Reset",
-        recipients=[email],
-        body=f"Use this token to reset your password:\n\n{token}",
-        subtype="plain",
-    )
+    print("===================================")
+    print("PASSWORD RESET TOKEN:", token)
+    print("===================================")
 
-    fm = FastMail(conf)
-    await fm.send_message(message)
-
-    return {"message": "Reset email sent"}
+    return {
+        "message": "Password reset token generated",
+        "token": token
+}
 
 @router.post("/reset-password")
 async def reset_password(

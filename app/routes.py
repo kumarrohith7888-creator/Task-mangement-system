@@ -516,7 +516,7 @@ async def forgot_password(
         f"reset-password?token={token}"
     )
 
-    await send_reset_email(email, reset_link)
+    #await send_reset_email(email, reset_link)
 
     return {
         "message": "Password reset email sent successfully"

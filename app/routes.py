@@ -515,15 +515,16 @@ async def forgot_password(
         f"https://task-management-frontend-six-ivory.vercel.app/"
         f"reset-password?token={token}"
     )
-    print("Before sending email")
 
-    await send_reset_email(email, reset_link)
 
-    print("Email sent successfully")
+    #await send_reset_email(email, reset_link)
+
 
 
     return {
-        "message": "Password reset email sent successfully"
+        "message": "Password reset email sent successfully",
+        "reset_link": reset_link
+    
     }
 
 

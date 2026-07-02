@@ -512,10 +512,9 @@ async def forgot_password(
     password_reset_tokens[token] = user.id
 
     reset_link = (
-        f"https://task-management-frontend-six-ivory.vercel.app/"
+        f"https://task-management-frontend-git-main-tigers6.vercel.app/"
         f"reset-password?token={token}"
-    )
-
+)
 
     #await send_reset_email(email, reset_link)
 

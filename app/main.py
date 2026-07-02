@@ -13,6 +13,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "https://task-management-frontend-six-ivory.vercel.app",
+        "https://task-management-frontend-3fa0b61t6-tigers6.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],

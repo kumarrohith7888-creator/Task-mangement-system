@@ -1,5 +1,6 @@
+import email
 import token
-
+from app.email_service import send_reset_email
 from fastapi import APIRouter, Depends
 from fastapi import UploadFile, File
 import shutil
@@ -510,16 +511,15 @@ async def forgot_password(
     token = secrets.token_urlsafe(32)
     password_reset_tokens[token] = user.id
 
-    print("===================================")
-    print("PASSWORD RESET TOKEN:", token)
-    print("===================================")
+    reset_link = (
+        f"https://task-management-frontend-six-ivory.vercel.app/"
+        f"reset-password?token={token}"
+    )
 
-    
-    reset_link = f"https://task-management-frontend-six-ivory.vercel.app/reset-password?token={token}"
+    await send_reset_email(email, reset_link)
 
     return {
-        "message": "Password reset link generated",
-        "reset_link": reset_link
+        "message": "Password reset email sent successfully"
     }
 
 

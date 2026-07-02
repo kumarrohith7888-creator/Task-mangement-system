@@ -8,3 +8,4 @@ __pycache__/
 uploads/
 app/uploads/
 tasks.csv
+task.db

@@ -1,12 +1,15 @@
 # 📋 Task Management System
 
-A full-stack Task Management System built using **React.js** and **FastAPI** with JWT Authentication.
+A full-stack **Task Management System** built using **React.js** and **FastAPI** with **JWT Authentication**. This application helps users manage tasks efficiently with secure authentication, task tracking, search, filtering, comments, file uploads, and password reset functionality.
 
-## 🚀 Live Demo
+---
 
-Frontend: https://your-frontend-link
+# 🚀 Live Demo
 
-Backend API:
+### 🌐 Frontend
+https://task-management-frontend-git-main-tigers6.vercel.app
+
+### ⚙️ Backend API
 https://task-mangement-system-nrf1.onrender.com
 
 ---
@@ -14,21 +17,22 @@ https://task-mangement-system-nrf1.onrender.com
 # ✨ Features
 
 - 🔐 User Registration
-- 🔑 User Login (JWT Authentication)
-- 📋 Create Tasks
-- ✏️ Edit Tasks
+- 🔑 Secure Login using JWT Authentication
+- 📋 Create New Tasks
+- ✏️ Edit Existing Tasks
 - 🗑 Delete Tasks
 - 🔍 Search Tasks
-- 🎯 Filter by Status
-- 📊 Sort by Due Date
+- 🎯 Filter Tasks by Status
+- 📊 Sort Tasks by Due Date
 - 📈 Dashboard Statistics
 - ⚠️ Overdue Task Highlight
-- 💬 Comments
+- 💬 Task Comments
 - 📁 File Upload
 - 📤 Export Tasks to CSV
 - 🔒 Forgot Password
-- 🔄 Reset Password
-- ☁️ Render Deployment
+- 🔄 Secure Password Reset using Token
+- ☁️ Frontend Deployed on Vercel
+- ☁️ Backend Deployed on Render
 
 ---
 
@@ -37,7 +41,7 @@ https://task-mangement-system-nrf1.onrender.com
 ## Frontend
 
 - React.js
-- React Router
+- React Router DOM
 - Axios
 - CSS
 
@@ -47,6 +51,7 @@ https://task-mangement-system-nrf1.onrender.com
 - SQLAlchemy
 - SQLite
 - JWT Authentication
+- Passlib (Password Hashing)
 - Pydantic
 - Uvicorn
 
@@ -54,7 +59,7 @@ https://task-mangement-system-nrf1.onrender.com
 
 # 📂 Project Structure
 
-```
+```text
 TaskManagementSystem
 │
 ├── Frontend (React)
@@ -63,35 +68,39 @@ TaskManagementSystem
 │
 ├── Database (SQLite)
 │
-└── Render Deployment
+└── Deployment
+    ├── Vercel (Frontend)
+    └── Render (Backend)
 ```
 
 ---
 
-# 🔑 Authentication
+# 🔐 Authentication
 
-- JWT Token
-- Protected Routes
+- JWT Token Authentication
 - Password Hashing
+- Protected Routes
+- Secure Password Reset
 
 ---
 
 # 📊 Dashboard
 
-Dashboard contains
+The dashboard provides:
 
 - Total Tasks
 - Completed Tasks
 - Pending Tasks
 - High Priority Tasks
+- Overdue Tasks
 
 ---
 
 # 📸 Screenshots
 
-Add screenshots here after uploading them.
+Screenshots can be added later.
 
-Example:
+Suggested screenshots:
 
 - Login Page
 - Register Page
@@ -147,4 +156,10 @@ https://github.com/kumarrohith7888-creator
 
 ---
 
-⭐ If you like this project, give it a Star.
+# 📄 License
+
+This project is created for educational purposes.
+
+---
+
+⭐ If you like this project, please give it a Star.

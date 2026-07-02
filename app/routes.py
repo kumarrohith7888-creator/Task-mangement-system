@@ -503,7 +503,9 @@ async def forgot_password(
     user = db.query(models.User).filter(models.User.email == email).first()
 
     if not user:
-        raise HTTPException(status_code=404, detail="User not found")
+        return {
+            "message": "If the email exists, a password reset link has been sent."
+        }
 
     token = secrets.token_urlsafe(32)
     password_reset_tokens[token] = user.id
